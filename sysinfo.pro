@@ -6,7 +6,7 @@
 
 QT       += core gui
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets charts
 
 TARGET = sysinfo
 TEMPLATE = app
@@ -27,11 +27,15 @@ CONFIG += c++11
 SOURCES += \
     main.cpp \
     mainwindow.cpp \
-    sysinfo.cpp
+    sysinfo.cpp \
+    sysinfowidget.cpp \
+    cpuwidget.cpp
 
 HEADERS += \        
     mainwindow.h \
-    sysinfo.h
+    sysinfo.h \
+    sysinfowidget.h \
+    cpuwidget.h
 
 
 windows {

@@ -2,16 +2,28 @@
 #define SYSINFOWIDGET_H
 
 #include <QWidget>
+#include <QTimer>
+#include <QtCharts/QChartView>
 
 class SysInfoWidget : public QWidget
 {
     Q_OBJECT
 public:
-    explicit SysInfoWidget(QWidget *parent = nullptr);
+    explicit SysInfoWidget(QWidget *parent = nullptr,
+                           int startDelayMs = 500,
+                           int updateSeriesDelayMs = 500);
 
-signals:
+protected:
+    QtCharts::QChartView& chartView();
 
-public slots:
+protected slots:
+    virtual void updateSeries() = 0;
+
+private:
+    QTimer mRefreshTimer;
+    QtCharts::QChartView mChartView;
+
 };
+
 
 #endif // SYSINFOWIDGET_H
