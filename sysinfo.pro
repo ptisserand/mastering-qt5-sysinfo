@@ -25,15 +25,24 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
-        main.cpp \
-        mainwindow.cpp \
-    sysinfo.cpp \
-    sysinfowindowsimpl.cpp
+    main.cpp \
+    mainwindow.cpp \
+    sysinfo.cpp
 
-HEADERS += \
-        mainwindow.h \
-    sysinfo.h \
-    sysinfowindowsimpl.h
+HEADERS += \        
+    mainwindow.h \
+    sysinfo.h
+
+
+windows {
+    HEADERS += sysinfowindowsimpl.h
+    SOURCES += sysinfowindowsimpl.cpp
+}
+
+linux {
+    HEADERS += sysinfolinuximpl.h
+    SOURCES += sysinfolinuximpl.cpp
+}
 
 FORMS += \
         mainwindow.ui
