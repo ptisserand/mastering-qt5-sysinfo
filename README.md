@@ -4,3 +4,6 @@ This is a basic application only showing CPU usage and memory used.
 
 **Only Windows and Linux are supported and tested.**
 
+![Screenshot](/screenshots/application.PNG)
+
+
