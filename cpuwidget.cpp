@@ -8,11 +8,13 @@ using namespace QtCharts;
 
 CpuWidget::CpuWidget(QWidget* parent):
     SysInfoWidget(parent),
-    mSeries(new QPieSeries(this))
+    mSeries(new QPieSeries(this)),
+	mLoad(nullptr),
+	mFree(nullptr)
 {
     mSeries->setHoleSize(0.35);
-    mSeries->append("CPU Load", 30.0);
-    mSeries->append("CPU Free", 70.0);
+    mLoad = mSeries->append("CPU Load", 30.0);
+    mFree = mSeries->append("CPU Free", 70.0);
 
     QChart* chart = chartView().chart();
 	QFont tFont = chart->titleFont();
@@ -21,12 +23,13 @@ CpuWidget::CpuWidget(QWidget* parent):
 	chart->setTitleFont(tFont);
 	chart->addSeries(mSeries);	
     chart->setTitle("CPU average load");
+	chart->setAnimationOptions(QChart::SeriesAnimations);
 }
+
 
 void CpuWidget::updateSeries()
 {
-    double cpuLoadAverage = SysInfo::instance().cpuLoadAverage();
-    mSeries->clear();
-    mSeries->append("Load", cpuLoadAverage);
-    mSeries->append("Free", 100.0 - cpuLoadAverage);
+	double cpuLoadAverage = SysInfo::instance().cpuLoadAverage();		
+	mLoad->setValue(cpuLoadAverage);	
+	mFree->setValue(100.0 - cpuLoadAverage);	
 }

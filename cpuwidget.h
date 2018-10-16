@@ -16,6 +16,9 @@ protected slots:
 
 private:
     QtCharts::QPieSeries* mSeries;
+	QtCharts::QPieSlice* mLoad;
+	QtCharts::QPieSlice* mFree;
+
 };
 
 #endif // CPUWIDGET_H
