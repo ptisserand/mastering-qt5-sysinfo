@@ -1,0 +1,7 @@
+.vs
+GeneratedFiles
+Win32
+debug
+release
+*.filters
+*.user
