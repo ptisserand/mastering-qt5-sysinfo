@@ -15,7 +15,11 @@ CpuWidget::CpuWidget(QWidget* parent):
     mSeries->append("CPU Free", 70.0);
 
     QChart* chart = chartView().chart();
-    chart->addSeries(mSeries);
+	QFont tFont = chart->titleFont();
+	tFont.setBold(true);
+
+	chart->setTitleFont(tFont);
+	chart->addSeries(mSeries);	
     chart->setTitle("CPU average load");
 }
 

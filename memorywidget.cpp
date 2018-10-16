@@ -31,7 +31,11 @@ MemoryWidget::MemoryWidget(QWidget* parent):
     areaSeries->setBrush(gradient);
 
     QChart* chart = chartView().chart();
+	QFont tFont = chart->titleFont();
+	tFont.setBold(true);
+
     chart->addSeries(areaSeries);
+	chart->setTitleFont(tFont);
     chart->setTitle("Memory used");
     chart->createDefaultAxes();
     chart->axisX()->setVisible(false);
